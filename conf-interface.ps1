@@ -27,9 +27,12 @@ while ($confinterface -eq "o") {
         $n=Read-Host -Prompt "Combien voulez-vous affecter d'adresse DNS au serveur "
         # Tant que "n", pour le nombre d'adresse DNS à saisir, n'atteind pas "0", alors on saisit des adresses DNS
         while ($n -ne 0){
-            Write-Output "Saisir l'adresse DNS numéro $n "
-            Set-DnsClient -InterfaceIndex $numIntIndex -ConnectionSpecificSuffix $namedomain
-            $n--
+            #Write-Output "Saisir l'adresse DNS numéro $n "
+	    $namedomain=Read-Host -Prompt "Saisir l'adresse DNS numero $n"
+	    Set-DnsClient -InterfaceIndex $numIntIndex -ConnectionSpecificSuffix $namedomain
+	    # Il faut que $n soit converti en nombre
+            # $n--
+	    $n=$n-1
         }        
     }
 
